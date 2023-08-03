@@ -35,7 +35,7 @@ with DAG(
     default_args=default_args,
     start_date=datetime(2023, 1, 1),
     catchup=False,
-    tags=["version_25"],
+    tags=["version_01"],
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
     on_success_callback=run_inform_success,
@@ -43,7 +43,7 @@ with DAG(
 ) as dag:
 
     from time import sleep
-    sleep(60)
+    sleep(120)
     successful_task = BashOperator(
         task_id = "successful_task",
         bash_command = "echo SUCCESS"
