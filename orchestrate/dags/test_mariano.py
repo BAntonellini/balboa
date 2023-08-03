@@ -42,6 +42,8 @@ with DAG(
     on_failure_callback=run_inform_failure,
 ) as dag:
 
+    from time import sleep
+    sleep(60)
     successful_task = BashOperator(
         task_id = "successful_task",
         bash_command = "echo SUCCESS"
