@@ -42,9 +42,9 @@ with DAG(
     on_failure_callback=run_inform_failure,
 ) as dag:
 
-    for _ in range(10):
+    for i in range(10):
         successful_task = BashOperator(
-            task_id = "successful_task",
+            task_id = "successful_task_{i}",
             bash_command = "echo SUCCESS"
         )
 
