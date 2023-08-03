@@ -35,7 +35,7 @@ with DAG(
     default_args=default_args,
     start_date=datetime(2023, 1, 1),
     catchup=False,
-    tags=["version_01"],
+    tags=["version_02"],
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
     on_success_callback=run_inform_success,
