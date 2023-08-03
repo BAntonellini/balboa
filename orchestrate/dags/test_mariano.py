@@ -44,7 +44,7 @@ with DAG(
 
     for i in range(10):
         successful_task = BashOperator(
-            task_id = "successful_task_{i}",
+            task_id = f"successful_task_{i}",
             bash_command = "echo SUCCESS"
         )
 
