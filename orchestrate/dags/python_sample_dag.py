@@ -54,28 +54,28 @@ with DAG(
     )
 
     successful_task1 = BashOperator(
-        task_id = "successful_task",
+        task_id = "successful_task1",
         executor_config = CONFIG,
         # bash_command = "echo SUCCESS"
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
     )
 
     successful_task2 = BashOperator(
-        task_id = "successful_task",
+        task_id = "successful_task2",
         executor_config = CONFIG,
         # bash_command = "echo SUCCESS"
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
     )
 
     successful_task3 = BashOperator(
-        task_id = "successful_task",
+        task_id = "successful_task3",
         executor_config = CONFIG,
         # bash_command = "echo SUCCESS"
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
     )
 
     successful_task4 = BashOperator(
-        task_id = "successful_task",
+        task_id = "successful_task4",
         executor_config = CONFIG,
         # bash_command = "echo SUCCESS"
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
