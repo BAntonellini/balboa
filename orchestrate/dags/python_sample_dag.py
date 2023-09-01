@@ -47,7 +47,7 @@ with DAG(
     )
 
     successful_task = BashOperator(
-        task_id = "successful_task",
+        task_id = "successful_task0",
         executor_config = CONFIG,
         # bash_command = "echo SUCCESS"
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
