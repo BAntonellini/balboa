@@ -46,6 +46,42 @@ with DAG(
         bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
     )
 
+    successful_task = BashOperator(
+        task_id = "successful_task",
+        executor_config = CONFIG,
+        # bash_command = "echo SUCCESS"
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
+    )
+
+    successful_task1 = BashOperator(
+        task_id = "successful_task",
+        executor_config = CONFIG,
+        # bash_command = "echo SUCCESS"
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
+    )
+
+    successful_task2 = BashOperator(
+        task_id = "successful_task",
+        executor_config = CONFIG,
+        # bash_command = "echo SUCCESS"
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
+    )
+
+    successful_task3 = BashOperator(
+        task_id = "successful_task",
+        executor_config = CONFIG,
+        # bash_command = "echo SUCCESS"
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
+    )
+
+    successful_task4 = BashOperator(
+        task_id = "successful_task",
+        executor_config = CONFIG,
+        # bash_command = "echo SUCCESS"
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run"
+    )
+
+
     # failing_task = BashOperator(
     #     task_id = 'failing_task',
     #     bash_command = "some_non_existant_command"
@@ -53,4 +89,4 @@ with DAG(
 
     # successful_task >> failing_task
 
-    successful_task >> successful_task >> successful_task >> successful_task
+    successful_task >> successful_task1 >> successful_task2 >> successful_task3 >> successful_task4
