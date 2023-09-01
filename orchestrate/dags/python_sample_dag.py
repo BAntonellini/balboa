@@ -38,6 +38,7 @@ with DAG(
     schedule_interval = "0 0 1 */12 *"
 ) as dag:
 
+
     successful_task = BashOperator(
         task_id = "successful_task",
         executor_config = CONFIG,
@@ -52,4 +53,5 @@ with DAG(
 
     # successful_task >> failing_task
 
-    successful_task
+    for i in range(0, 20):
+        successful_task
