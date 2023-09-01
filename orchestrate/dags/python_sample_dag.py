@@ -33,7 +33,7 @@ with DAG(
     default_args = default_args,
     start_date = datetime(2023, 1, 1),
     catchup = False,
-    tags = ["version_6"],
+    tags = ["version_7"],
     description = "Sample python dag dbt run",
     schedule_interval = "0 0 1 */12 *"
 ) as dag:
@@ -53,5 +53,4 @@ with DAG(
 
     # successful_task >> failing_task
 
-    for i in range(0, 20):
-        successful_task
+    successful_task >> successful_task >> successful_task >> successful_task
