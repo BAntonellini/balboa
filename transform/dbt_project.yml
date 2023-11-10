@@ -1,129 +1,37 @@
+
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'balboa'
-# this is the project version, has nothing to do with dbt version
-version: '11.0.0'
+name: 'transform'
+version: '1.0.0'
 config-version: 2
 
-require-dbt-version: ">=1.1.0"
-
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: 'transform'
 
 # These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that models in this project can be
+# The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-
-# Snowflake version
 model-paths: ["models"]
-snapshot-paths: ["snapshots"]
-
-packages-install-path: dbt_packages
-
-analysis-paths: ["analysis"]
+analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
 
-target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
-    - "target"
-    - "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
-# These settings can be overridden in the individual model files
-seeds:
-    +schema: seeds
-    +docs:
-        node_color: "#379965"
-    +quote_columns: false
-    +persist_docs:
-        relation: true
-        columns: true
 
-snapshots:
-    balboa:
-        +target_database: raw
-        +target_schema: snapshots
-    +docs:
-        node_color: "#0f703d"
-
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
 models:
-    balboa:
-        +materialized: view
-        +schema: z_schema_not_configured
-
-        L1_inlets:
-            account_usage:
-                +schema: l1_account_usage
-            country_data:
-                +schema: l1_country_data
-            google_analytics_4:
-                +schema: l1_google_analytics_4
-            starschema_covid19:
-                +schema: l1_starschema_covid19
-            loans:
-                +schema: l1_loans
-
-        L2_bays:
-            +docs:
-                node_color: "#000899"
-            country_demographics:
-                +schema: l2_country_demographics
-            covid_observations:
-                +schema: l2_covid_observations
-            snowflake_usage:
-                +schema: l2_snowflake_usage
-
-        L3_coves:
-            +docs:
-                node_color: "#366ccf"
-            covid_analytics:
-                +schema: l3_covid_analytics
-            loan_analytics:
-                +schema: l3_loan_analytics
-                # cannot persist docs on dynamic tables
-                +persist_docs:
-                    relation: false
-            +materialized: table
-
-        # L4_shares:
-        #   +docs:
-        #     node_color: "#FCA868"
-        #   materialized: table
-        #   +database: "{{ 'prd_shared_dw' if target.name == 'prd' else target.database }}"
-        #   digital_product_analytics:
-        #     +schema: cove_digital_product_analytics
-        #   +copy_grants: false
-        #   +post-hook: "{{ add_grants_to_share('PRD_ANALYTICS_DW_SNOWFLAKE_SECURE_SHARE_167') }}"
-        #   +transient: false
-        #   +persist_docs:
-        #       relation: false
-        #       columns: false
-
-
-        +persist_docs:
-            relation: true
-            columns: true
-
-    post-hook:
-        - "{{ dbt_snow_mask.apply_masking_policy() }}"
-
-    # Snowflake Defaults
-    +transient: "{{ 'false' if target.name == 'prod' else 'true' }}"
-    copy_grants: true
-
-tests:
-    +store_failures: true
-
-vars:
-    'dbt_date:time_zone': 'America/Los_Angeles'
-
-    data_diff:
-        prod_database: BALBOA
-        prod_schema: NOT_DEFINED
-        prod_custom_schema: <custom_schema>
-        datasource_id: 6003
+  transform:
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
