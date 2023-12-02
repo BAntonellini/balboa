@@ -41,3 +41,8 @@ load:
     path: /config/workspace/load/fivetran
     secrets_manager: datacoves
     run_connection_tests: true
+
+dbt:
+  upload_manifest: true
+  upload_manifest_url: "http://localhost:4000/api/internal/manifests"
+  upload_manifest_token: "dev_internal_bearer_token"
