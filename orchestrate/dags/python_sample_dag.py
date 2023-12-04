@@ -40,7 +40,7 @@ with DAG(
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
-        bash_command="env",
+        bash_command="env | sort",
     )
     # successful_task = BashOperator(
     #     task_id="successful_task",
