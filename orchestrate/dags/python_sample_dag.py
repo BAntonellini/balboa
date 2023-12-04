@@ -2,6 +2,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from kubernetes.client import models as k8s
+import subprocess
 
 # Replace with your docker image repo path
 IMAGE_REPO = "datacoves/airflow-pandas"
@@ -23,6 +24,9 @@ CONFIG = {
         )
     ),
 }
+
+command = f"pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
+subprocess.run(command, shell=True, check=True)
 
 with DAG(
     dag_id="python_sample_dag",
