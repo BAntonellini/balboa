@@ -44,5 +44,5 @@ load:
 
 dbt:
   upload_manifest: true
-  upload_manifest_url: "http://localhost:4000/api/internal/manifests"
+  upload_manifest_url: "http://core-dbt-api-svc.core.svc.cluster.local/api/internal/manifests"
   upload_manifest_token: "dev_internal_bearer_token"
