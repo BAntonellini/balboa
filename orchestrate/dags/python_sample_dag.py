@@ -41,6 +41,13 @@ with DAG(
     print("Standard Output: ", result.stdout)
     print("Standard Error: ", result.stderr)
 
+    command = "source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s personal_loans"
+    result = subprocess.run(
+        command, shell=True, check=True, executable="/bin/bash", text=True
+    )
+    print("Standard Output: ", result.stdout)
+    print("Standard Error: ", result.stderr)
+
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
