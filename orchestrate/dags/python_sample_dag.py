@@ -25,9 +25,6 @@ CONFIG = {
     ),
 }
 
-command = f"pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
-subprocess.run(command, shell=True, check=True)
-
 with DAG(
     dag_id="python_sample_dag",
     default_args=default_args,
@@ -37,6 +34,9 @@ with DAG(
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
 ) as dag:
+    command = f"pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
+    subprocess.run(command, shell=True, check=True)
+
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
