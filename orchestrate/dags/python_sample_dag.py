@@ -45,7 +45,7 @@ with DAG(
 
     # failing_task = BashOperator(
     #     task_id = 'failing_task',
-    #     bash_command = "some_non_existant_command 456"
+    #     bash_command = "some_non_existant_command 234"
     # )
 
     # successful_task >> failing_task
