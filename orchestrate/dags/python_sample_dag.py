@@ -34,13 +34,15 @@ with DAG(
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
 ) as dag:
-    command = f"pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
-    subprocess.run(command, shell=True, check=True)
+    command = "pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
+    result = subprocess.run(command, shell=True, check=True)
+    print("Standard Output: ", result.stdout)
+    print("Standard Error: ", result.stderr)
 
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
-        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run",
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build",
     )
 
     # failing_task = BashOperator(
