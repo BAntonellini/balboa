@@ -35,11 +35,7 @@ with DAG(
     schedule_interval="0 0 1 */12 *",
 ) as dag:
     command = "source /opt/datacoves/virtualenvs/main/bin/activate && pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api dbt-snowflake"
-    result = subprocess.run(
-        command, shell=True, check=True, executable="/bin/bash", text=True
-    )
-    print("Standard Output: ", result.stdout)
-    print("Standard Error: ", result.stderr)
+    subprocess.run(command, shell=True, check=True, executable="/bin/bash", text=True)
 
     successful_task = BashOperator(
         task_id="successful_task",
@@ -49,7 +45,7 @@ with DAG(
 
     # failing_task = BashOperator(
     #     task_id = 'failing_task',
-    #     bash_command = "some_non_existant_command 123"
+    #     bash_command = "some_non_existant_command 456"
     # )
 
     # successful_task >> failing_task
