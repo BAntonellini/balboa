@@ -35,7 +35,7 @@ with DAG(
     schedule_interval="0 0 1 */12 *",
 ) as dag:
     command = "source /opt/datacoves/virtualenvs/main/bin/activate && pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
-    result = subprocess.run(command, shell=True, check=True)
+    result = subprocess.run(command, shell=True, check=True, executable="/bin/bash")
     print("Standard Output: ", result.stdout)
     print("Standard Error: ", result.stderr)
 
