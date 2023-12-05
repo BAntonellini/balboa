@@ -42,7 +42,7 @@ with DAG(
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
-        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build",
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s personal_loans",
     )
 
     # failing_task = BashOperator(
