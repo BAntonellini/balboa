@@ -37,17 +37,16 @@ with DAG(
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
 ) as dag:
-    successful_task = BashOperator(
-        task_id="successful_task",
-        executor_config=CONFIG,
-        bash_command="env | sort",
-    )
     # successful_task = BashOperator(
     #     task_id="successful_task",
     #     executor_config=CONFIG,
-    #     # bash_command = "echo SUCCESS 123"
-    #     bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run",
+    #     bash_command="env | sort",
     # )
+    successful_task = BashOperator(
+        task_id="successful_task",
+        executor_config=CONFIG,
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s tag:daily_run",
+    )
 
     # failing_task = BashOperator(
     #     task_id = 'failing_task',
