@@ -25,11 +25,6 @@ CONFIG = {
     ),
 }
 
-command = "pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
-result = subprocess.run(command, shell=True, check=True)
-print("Standard Output: ", result.stdout)
-print("Standard Error: ", result.stderr)
-
 with DAG(
     dag_id="python_sample_dag",
     default_args=default_args,
@@ -39,10 +34,15 @@ with DAG(
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
 ) as dag:
+    command = "source /opt/datacoves/virtualenvs/main/bin/activate && pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api"
+    result = subprocess.run(command, shell=True, check=True)
+    print("Standard Output: ", result.stdout)
+    print("Standard Error: ", result.stderr)
+
     successful_task = BashOperator(
         task_id="successful_task",
         executor_config=CONFIG,
-        bash_command="dbt-coves dbt -- build -s personal_loans",
+        bash_command="source /opt/datacoves/virtualenvs/main/bin/activate && dbt-coves dbt -- build -s personal_loans",
     )
 
     # failing_task = BashOperator(
