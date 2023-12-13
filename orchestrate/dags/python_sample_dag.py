@@ -34,8 +34,8 @@ with DAG(
     description="Sample python dag dbt run",
     schedule_interval="0 0 1 */12 *",
 ) as dag:
-    command = "source /opt/datacoves/virtualenvs/main/bin/activate && pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api dbt-snowflake"
-    subprocess.run(command, shell=True, check=True, executable="/bin/bash", text=True)
+    # command = "source /opt/datacoves/virtualenvs/main/bin/activate && pip install git+https://github.com/datacoves/dbt-coves.git@optionally-upload-manifest-to-dbt-api dbt-snowflake"
+    # subprocess.run(command, shell=True, check=True, executable="/bin/bash", text=True)
 
     successful_task = BashOperator(
         task_id="successful_task",
