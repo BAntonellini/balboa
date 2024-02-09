@@ -6,7 +6,7 @@ from fivetran_provider.operators.fivetran import FivetranOperator
 from fivetran_provider.sensors.fivetran import FivetranSensor
 from operators.datacoves.bash import DatacovesBashOperator
 from operators.datacoves.dbt import DatacovesDbtOperator
-
+from airflow.models import Variable
 
 
 @dag(
@@ -60,7 +60,7 @@ def daily_loan_run():
         load_us_population = DatacovesBashOperator(
             task_id="load_us_population",
             ctivate_venv=False,
-            bash_command="from airflow.models import Variable && print(Variable.get('my_var')) && source activate && python load/dlt/csv_to_snowflake/load_csv_data.py",
+            bash_command="print(Variable.get('my_var')) && source activate && python load/dlt/csv_to_snowflake/load_csv_data.py",
         )
 
     tg_extract_and_load_dlt = extract_and_load_dlt()
