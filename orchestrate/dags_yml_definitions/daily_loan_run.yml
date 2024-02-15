@@ -33,7 +33,8 @@ nodes:
         # activate_venv: true
         # Virtual Environment is automatically activated
 
-        bash_command: "python load/dlt/csv_to_snowflake/load_csv_data.py"
+        cwd: "load/dlt/csv_to_snowflake/"
+        bash_command: "python load_csv_data.py"
 
 
   transform:
