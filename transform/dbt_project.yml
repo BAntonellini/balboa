@@ -52,6 +52,7 @@ snapshots:
         node_color: "#0f703d"
 
 models:
+    start: "2020-01-01"
 
     balboa:
         +materialized: view

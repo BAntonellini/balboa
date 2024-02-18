@@ -1,8 +1,11 @@
-{{ config(
+{#
+    NOT Supported by SQLMesh 2024-02-18
+
+    {{ config(
     materialized = 'dynamic_table',
     snowflake_warehouse = 'wh_transforming',
     target_lag = '1 minute',
-) }}
+) }} #}
 
 select
     personal_loans.addr_state as state,

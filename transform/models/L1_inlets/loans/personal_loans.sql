@@ -1,9 +1,12 @@
-{{ config(
+{#
+    NOT Supported by SQLMesh 2024-02-18
+
+    {{ config(
     materialized = 'dynamic_table',
     snowflake_warehouse = 'wh_transforming',
     target_lag = 'downstream',
     persist_docs={"relation": false},
-) }}
+) }} #}
 
 with raw_source as (
 
