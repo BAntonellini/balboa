@@ -1,5 +1,19 @@
-"""## Datacoves Bash Operator DAG
-This DAG is a sample using the Datacoves Airflow Operators"""
+"""
+# Example DAG
+
+This DAG demonstrates how to use the `dag.doc_md` feature in Airflow.
+It includes tasks for demonstration purposes.
+
+## Schedule
+
+- **Frequency**: Runs daily at midnight.
+- **Catch Up**: False
+
+## Tasks
+
+1. **task_1**: Description of task 1.
+2. **task_2**: Description of task 2.
+"""
 
 from airflow.decorators import dag
 from operators.datacoves.bash import DatacovesBashOperator
