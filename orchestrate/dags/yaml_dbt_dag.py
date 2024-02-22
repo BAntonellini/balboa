@@ -16,10 +16,10 @@ from operators.datacoves.dbt import DatacovesDbtOperator
     tags=["version_2"],
     catchup=False,
 )
-def yaml_dbt_dag_old():
+def yaml_dbt_dag():
     run_dbt = DatacovesDbtOperator(
         task_id="run_dbt", bash_command="dbt run -s personal_loans"
     )
 
 
-dag = yaml_dbt_dag_old()
+dag = yaml_dbt_dag()
