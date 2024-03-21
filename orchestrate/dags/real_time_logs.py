@@ -22,7 +22,7 @@ with DAG(
     default_args = default_args,
     start_date = datetime(2023, 8, 10),
     catchup = False,
-    tags = ["version_5"],
+    tags = ["version_1"],
     description = "Sample python dag dbt run",
     schedule_interval="*/10 * * * *",
 ) as dag:
