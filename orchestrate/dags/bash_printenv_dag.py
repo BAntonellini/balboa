@@ -24,7 +24,7 @@ default_args = {
 with DAG(
     dag_id="bash_printenv_dag",
     default_args=default_args,
-    start_date=datetime(2023, 8, 10),
+    start_date = datetime(2024, 3, 1),
     catchup=False,
     tags=["version_1"],
     description="Sample python teams dag",
