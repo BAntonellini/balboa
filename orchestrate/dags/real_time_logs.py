@@ -18,9 +18,9 @@ default_args = {
 }
 
 with DAG(
-    dag_id = "python_sample_dag",
+    dag_id = "real_time_logs",
     default_args = default_args,
-    start_date = datetime(2023, 8, 10),
+    start_date = datetime(2024, 3, 1),
     catchup = False,
     tags = ["version_1"],
     description = "Sample python dag dbt run",
