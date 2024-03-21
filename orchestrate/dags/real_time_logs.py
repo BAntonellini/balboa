@@ -39,7 +39,7 @@ with DAG(
     end_task = DummyOperator(task_id='end_task')
 
     my_real_time_logs = real_time_logs()
-    start_task >> my_task_1 >> end_task
+    start_task >> my_real_time_logs >> end_task
 
     """
     for i in range(10):
