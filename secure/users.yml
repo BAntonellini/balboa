@@ -17,23 +17,23 @@
     can_login: true
     member_of:
       - analyst
-      - securityadmin
+      # - securityadmin
 
 # Daniel Palma
-- daniel:
-    can_login: true
-    member_of:
-      - analyst
+# - daniel:
+#     can_login: true
+#     member_of:
+#       - analyst
 
-- daniela:
-    can_login: true
-    member_of:
-      - analyst
+# - daniela:
+#     can_login: true
+#     member_of:
+#       - analyst
 
-- davidscohen89:
-    can_login: true
-    member_of:
-      - analyst
+# - davidscohen89:
+#     can_login: true
+#     member_of:
+#       - analyst
 
 - gomezn:
     can_login: true
@@ -44,12 +44,13 @@
       - analyst
       - loader
       - transformer_dbt
+      - sqlmesh_analyst
 
-- joe:
-    can_login: true
-    member_of:
-      - analyst
-      - accountadmin
+# - joe:
+#     can_login: true
+#     member_of:
+#       - analyst
+#       - accountadmin
 
 # snowflake
 - james:
@@ -57,10 +58,10 @@
     member_of:
       - analyst
 
-- mariano:
-    can_login: true
-    member_of:
-      - analyst
+# - mariano:
+#     can_login: true
+#     member_of:
+#       - analyst
 
 - mayra:
     can_login: true
@@ -73,11 +74,27 @@
     member_of:
       - analyst
 
-# Raphael Mansuy
-- raphael:
+# SQLMesh Team
+- toby:
     can_login: true
     member_of:
-      - analyst
+      - sqlmesh_analyst
+
+- iaroslav:
+    can_login: true
+    member_of:
+      - sqlmesh_analyst
+
+- afzal:
+    can_login: true
+    member_of:
+      - sqlmesh_analyst
+
+# Raphael Mansuy
+# - raphael:
+#     can_login: true
+#     member_of:
+#       - analyst
 
 - sebastian:
     can_login: true
@@ -132,12 +149,18 @@
     member_of:
       - analyst
 
-- svc_datameer:
+- svc_rupert:
     can_login: true
     member_of:
       - analyst
 
-- svc_selectstar:
-    can_login: true
-    member_of:
-      - analyst
+
+# - svc_datameer:
+#     can_login: true
+#     member_of:
+#       - analyst
+
+# - svc_selectstar:
+#     can_login: true
+#     member_of:
+#       - analyst
