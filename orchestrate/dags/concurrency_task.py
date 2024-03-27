@@ -4,6 +4,7 @@ from airflow.decorators import task
 from airflow.operators.dummy import DummyOperator
 import logging
 import time
+import random
 
 logger = logging.getLogger(__name__)
 
@@ -18,11 +19,11 @@ default_args = {
 }
 
 with DAG(
-    dag_id = "python_sample_dag",
+    dag_id = "concurrency_tasks",
     default_args = default_args,
     start_date = datetime(2024, 3, 1),
     catchup = False,
-    tags = ["version_1"],
+    tags = ["version_3"],
     description = "Sample concurrency task",
     schedule_interval="*/10 * * * *",
 ) as dag:
@@ -43,10 +44,11 @@ with DAG(
 
     for i in range(10):
         @task(task_id=f"sleep_for_{i+1}")
-        def my_sleeping_function(random_base):
-            t = random_base + 15
-            return f"SLEEP {t}"
+        def my_sleeping_function():
+            t = random.randrange(30) + 1
+            logger.info(f"sleep_for_{i+1} SLEEP {t}", )
             time.sleep(t)
+            return f"SLEEP {t}"
 
-        sleeping_task = my_sleeping_function(random_base=i/10)
+        sleeping_task = my_sleeping_function()
         start_task >> my_print_context >> my_task_1 >> sleeping_task >> end_task
