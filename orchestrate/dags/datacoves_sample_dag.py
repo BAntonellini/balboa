@@ -19,6 +19,7 @@ from airflow.decorators import dag
 from operators.datacoves.bash import DatacovesBashOperator
 from operators.datacoves.dbt import DatacovesDbtOperator
 from pendulum import datetime
+from get_schedule import get_schedule
 
 # Only here for reference, this is automatically activated by Datacoves Operator
 DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
@@ -37,7 +38,7 @@ DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/
     # https://crontab.guru/
-    schedule_interval="0 0 1 */12 *",
+    schedule_interval=get_schedule('0 1 * * *'),
 )
 def datacoves_sample_dag():
 
