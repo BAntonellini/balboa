@@ -19,7 +19,7 @@ from airflow.decorators import dag
 from operators.datacoves.bash import DatacovesBashOperator
 from operators.datacoves.dbt import DatacovesDbtOperator
 from pendulum import datetime
-from orchestrate.python_scripts.get_schedule import get_schedule
+from custom import get_schedule
 
 # Only here for reference, this is automatically activated by Datacoves Operator
 DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
@@ -33,7 +33,7 @@ DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
         "email_on_failure": True,
     },
     catchup=False,
-    tags=["version_6"],
+    tags=["version_7"],
     description="Datacoves Sample dag",
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/

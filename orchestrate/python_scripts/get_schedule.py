@@ -1,3 +1,6 @@
+import os
+from typing import Union
+
 def get_schedule(default_input: Union[str, None]) -> Union[str, None]:
     """
     Sets the application's schedule based on the current environment setting. Allows you to
