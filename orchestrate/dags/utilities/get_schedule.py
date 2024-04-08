@@ -22,6 +22,6 @@ def get_schedule(default_input: Union[str, None]) -> Union[str, None]:
     """
     env_slug = os.environ.get("DATACOVES__ENVIRONMENT_SLUG", "").lower()
     if env_slug == "gay725":
-        return None
-    else:
         return default_input
+    else:
+        return None

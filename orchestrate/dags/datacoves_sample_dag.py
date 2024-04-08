@@ -33,7 +33,7 @@ DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
         "email_on_failure": True,
     },
     catchup=False,
-    tags=["version_7"],
+    tags=["version_8"],
     description="Datacoves Sample dag",
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/
