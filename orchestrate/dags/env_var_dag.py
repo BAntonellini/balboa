@@ -5,9 +5,9 @@ from operators.datacoves.bash import DatacovesBashOperator
 
 env = {
     "VAR_1": "",
-    "VAR_2": None,
+    "VAR_2": "",
     "VAR_3": "",
-    "VAR_4": None,
+    "VAR_4": "",
     "VAR_5": "",
 }
 
@@ -21,7 +21,7 @@ env = {
     },
     description="Sample DAG for dbt build",
     schedule_interval="0 0 1 */12 *",
-    tags=["version_1"],
+    tags=["version_2"],
     catchup=False,
 )
 def empty_env_dag():
