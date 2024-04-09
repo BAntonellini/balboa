@@ -3,7 +3,7 @@ import datetime
 from airflow.decorators import dag
 from operators.datacoves.bash import DatacovesBashOperator
 
-from ..python_scripts.get_schedule import get_schedule
+from orchestrate.python_scripts.get_schedule import get_schedule
 
 
 @dag(
@@ -15,7 +15,7 @@ from ..python_scripts.get_schedule import get_schedule
     },
     description="Sample DAG for dbt build",
     schedule_interval=get_schedule("0 0 1 */12 *"),
-    tags=["version_1"],
+    tags=["version_2"],
     catchup=False,
 )
 def dynamically_scheduled_dag():
