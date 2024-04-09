@@ -3,7 +3,7 @@ import datetime
 from airflow.decorators import dag
 from operators.datacoves.bash import DatacovesBashOperator
 
-from orchestrate.python_scripts.get_schedule import get_schedule
+from ..python_scripts.get_schedule import get_schedule
 
 
 @dag(
