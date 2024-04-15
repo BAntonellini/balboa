@@ -1,7 +1,7 @@
 import datetime
 
 from airflow.decorators import dag, task
-from notifiers.datacoves.ms_teams.notifier import MSTeamsNotifier
+from notifiers.datacoves.ms_teams import MSTeamsNotifier
 
 
 @dag(
