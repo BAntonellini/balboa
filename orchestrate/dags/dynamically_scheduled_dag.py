@@ -15,7 +15,7 @@ from orchestrate.python_scripts.get_schedule import get_schedule
     },
     description="Sample DAG for dbt build",
     schedule_interval=get_schedule("0 0 1 */12 *"),
-    tags=["version_3"],
+    tags=["version_4"],
     catchup=False,
 )
 def dynamically_scheduled_dag():
