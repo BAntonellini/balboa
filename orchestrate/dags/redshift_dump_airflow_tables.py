@@ -4,15 +4,19 @@ from operators.datacoves.data_sync import DatacovesDataSyncOperatorRedshift
 
 @dag(
     default_args={"start_date": "2021-01"},
-    description="sync_entire_db",
+    description="sync_some_tables",
     schedule_interval="0 0 1 */12 *",
     tags=["version_1"],
     catchup=False,
 )
-def redshift_sync_airflow_db():
+def redshift_sync_airflow_tables():
     # service connection name default is 'airflow_db_load'.
     # Destination type default is 'Redshift' (and the only one supported for now)
-    sync_entire_db = DatacovesDataSyncOperatorRedshift(service_connection_name="main")
+    sync_some_tables = DatacovesDataSyncOperatorRedshift(
+        service_connection_name="main",
+        destination_schema="BRUNO_TABLES_DUMP",
+        tables=["task_fail", "task_instance"],
+    )
 
 
-dag = redshift_sync_airflow_db()
+dag = redshift_sync_airflow_tables()
