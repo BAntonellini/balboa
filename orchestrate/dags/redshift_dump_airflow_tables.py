@@ -10,8 +10,6 @@ from operators.datacoves.data_sync import DatacovesDataSyncOperatorRedshift
     catchup=False,
 )
 def redshift_sync_airflow_tables():
-    # service connection name default is 'airflow_db_load'.
-    # Destination type default is 'Redshift' (and the only one supported for now)
     sync_some_tables = DatacovesDataSyncOperatorRedshift(
         service_connection_name="main",
         destination_schema="BRUNO_TABLES_DUMP",

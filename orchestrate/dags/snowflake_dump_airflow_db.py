@@ -10,8 +10,6 @@ from operators.datacoves.data_sync import DatacovesDataSyncOperatorSnowflake
     catchup=False,
 )
 def snowflake_sync_airflow_db():
-    # service connection name default is 'airflow_db_load'.
-    # Destination type default is 'snowflake' (and the only one supported for now)
     sync_entire_db = DatacovesDataSyncOperatorSnowflake()
 
 
