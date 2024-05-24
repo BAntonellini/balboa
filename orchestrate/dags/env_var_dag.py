@@ -21,7 +21,7 @@ env = {
     },
     description="Sample DAG for dbt build",
     schedule_interval="0 0 1 */12 *",
-    tags=["version_2"],
+    tags=["version_3"],
     catchup=False,
 )
 def empty_env_dag():
