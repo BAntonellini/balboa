@@ -10,7 +10,9 @@ from operators.datacoves.data_sync import DatacovesDataSyncOperatorRedshift
     catchup=False,
 )
 def redshift_sync_airflow_db():
-    sync_entire_db = DatacovesDataSyncOperatorRedshift(service_connection_name="main")
+    sync_entire_db = DatacovesDataSyncOperatorRedshift(
+        service_connection_name="redshift"
+    )
 
 
 dag = redshift_sync_airflow_db()

@@ -11,7 +11,7 @@ from operators.datacoves.data_sync import DatacovesDataSyncOperatorRedshift
 )
 def redshift_sync_airflow_tables():
     sync_some_tables = DatacovesDataSyncOperatorRedshift(
-        service_connection_name="main",
+        service_connection_name="redshift",
         destination_schema="BRUNO_TABLES_DUMP",
         tables=["task_fail", "task_instance"],
     )
