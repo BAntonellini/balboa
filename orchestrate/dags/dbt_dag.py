@@ -12,12 +12,12 @@ from operators.datacoves.dbt import DatacovesDbtOperator
     },
     description="Sample DAG for dbt build",
     schedule_interval="0 0 1 */12 *",
-    tags=["version_1"],
+    tags=["version_2"],
     catchup=False,
 )
-def yaml_dbt_dag():
+def dbt_command():
     run_dbt = DatacovesDbtOperator(
-        task_id="run_dbt",
+        task_id="run_dbt_commands",
         # bash_command="dbt run -s personal_loans"
         bash_command="dbt debug && dbt ls && dbt-coves dbt"
     )
