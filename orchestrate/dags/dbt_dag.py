@@ -7,8 +7,6 @@ from operators.datacoves.dbt import DatacovesDbtOperator
     default_args={
         "start_date": datetime.datetime(2024, 3, 27, 0, 0),
         "owner": "Alejandro Morera",
-        "email": "alejandro@datacoves.com",
-        "email_on_failure": True,
     },
     description="Sample DAG for dbt build",
     schedule_interval="0 0 1 */12 *",
