@@ -22,4 +22,4 @@ def dbt_command():
         bash_command="dbt debug && dbt ls && dbt-coves dbt"
     )
 
-dag = yaml_dbt_dag()
+dag = dbt_command()
