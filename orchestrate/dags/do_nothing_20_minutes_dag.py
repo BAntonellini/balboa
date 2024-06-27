@@ -24,13 +24,13 @@ DATACOVES_VIRTUAL_ENV = "/opt/datacoves/virtualenvs/main/bin/activate"
 )
 def do_nothing_for_20min():
     @task(task_id="log_every_30_seconds")
-    def wait_30_seconds(ds=None, **kwargs):
+    def do_nothing_30_seconds(ds=None, **kwargs):
         """Print a 'LOGGING' message every 30 seconds for 20 minutes"""
         for i in range(40):
             time.sleep(30)
         return
 
-    run_this = wait_30_seconds()
+    run_this = do_nothing_30_seconds()
 
 
 # Invoke Dag
