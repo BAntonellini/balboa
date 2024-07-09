@@ -26,7 +26,7 @@ with DAG(
     default_args=default_args,
     start_date = datetime(2024, 3, 1),
     catchup=False,
-    tags=["version_2"],
+    tags=["version_3"],
     description="Sample python teams dag",
     schedule_interval="*/10 * * * *",
     on_success_callback=run_inform_success,
@@ -35,7 +35,7 @@ with DAG(
 
     task_main = BashOperator(
         task_id = "task_main",
-        bash_command = "echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\" && ps -ef"
+        bash_command = "sleep 120 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
     )
 
     task_main
