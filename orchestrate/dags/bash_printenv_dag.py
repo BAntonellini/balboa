@@ -25,10 +25,10 @@ default_args = {
 with DAG(
     dag_id="bash_printenv_dag",
     default_args=default_args,
-    start_date = datetime(2024, 3, 1),
+    start_date = datetime(2024, 7, 10),
     catchup=False,
-    tags=["version_5"],
-    description="Sample python teams dag",
+    tags=["version_6"],
+    description="Sample dag",
     schedule_interval="*/10 * * * *",
     on_success_callback=run_inform_success,
     on_failure_callback=run_inform_failure,
@@ -48,5 +48,4 @@ with DAG(
         bash_command = "sleep 30 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
     )
 
-    my_eat_memory = eat_memory()
-    task_main >> eat_memory
+    task_main >> eat_memory()
