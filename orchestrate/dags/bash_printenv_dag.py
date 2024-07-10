@@ -35,7 +35,7 @@ with DAG(
 
     task_main = BashOperator(
         task_id = "task_main",
-        bash_command = "sleep 120 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
+        bash_command = "sleep 30 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\" && cls"
     )
 
     task_main
