@@ -17,7 +17,7 @@ def dbt_command():
     run_dbt = DatacovesDbtOperator(
         task_id="run_dbt_commands",
         # bash_command="dbt run -s personal_loans"
-        bash_command="dbt debug && dbt ls && dbt-coves dbt"
+        bash_command="dbt run -s ng_test"
     )
 
 dag = dbt_command()
