@@ -26,7 +26,7 @@ with DAG(
     default_args=default_args,
     start_date = datetime(2024, 3, 1),
     catchup=False,
-    tags=["version_3"],
+    tags=["version_4"],
     description="Sample python teams dag",
     schedule_interval="*/10 * * * *",
     on_success_callback=run_inform_success,
