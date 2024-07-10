@@ -28,7 +28,7 @@ with DAG(
     default_args=default_args,
     start_date = datetime(2024, 7, 10),
     catchup=False,
-    tags=["version_2"],
+    tags=["version_3"],
     description="Sample dag",
     schedule_interval="*/10 * * * *",
     on_success_callback=run_inform_success,
@@ -39,14 +39,14 @@ with DAG(
     def eat_memory(**kwargs):
         a = []
         while True:
-            a.append(' ' * 10**12)
+            a.append(' ' * 10**6)
             print(len(a))
 
         return {"msg": "Hello word!"}
 
     task_main = BashOperator(
         task_id = "task_main",
-        bash_command = "sleep 30 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
+        bash_command = "echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
     )
 
     task_main >> eat_memory()
