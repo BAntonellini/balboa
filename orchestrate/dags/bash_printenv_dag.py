@@ -3,6 +3,7 @@ from airflow.decorators import task
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from time import sleep
 
 
 def run_inform_success(context):
@@ -38,7 +39,7 @@ with DAG(
     def eat_memory(**kwargs):
         a = []
         while True:
-            a.append(' ' * 10**6)
+            a.append(' ' * 100**6)
             print(len(a))
 
         return {"msg": "Hello word!"}
