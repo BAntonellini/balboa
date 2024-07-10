@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from airflow.decorators import task
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
@@ -26,16 +27,26 @@ with DAG(
     default_args=default_args,
     start_date = datetime(2024, 3, 1),
     catchup=False,
-    tags=["version_4"],
+    tags=["version_5"],
     description="Sample python teams dag",
     schedule_interval="*/10 * * * *",
     on_success_callback=run_inform_success,
     on_failure_callback=run_inform_failure,
 ) as dag:
 
+    @task
+    def eat_memory(**kwargs):
+        a = []
+        while True:
+            a.append(' ' * 10**6)
+            print(len(a))
+
+        return {"msg": "Hello word!"}
+
     task_main = BashOperator(
         task_id = "task_main",
-        bash_command = "sleep 30 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\" && cls"
+        bash_command = "sleep 30 && echo \"===========| LOG_LEVEL: $LOG_LEVEL |==========\""
     )
 
-    task_main
+    my_eat_memory = eat_memory()
+    task_main >> eat_memory
