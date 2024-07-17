@@ -26,7 +26,7 @@ def datacoves_bluegreen_dag():
     # Calling dbt commands
     blue_green_run = DatacovesDbtOperator(
         task_id="blue_green_run",
-        bash_command="dbt-coves blue-green --service-connection-name main --keep-staging-db-on-success --dbt-selector '-s personal_loans'",
+        bash_command="dbt-coves blue-green --service-connection-name MAIN --keep-staging-db-on-success --dbt-selector '-s personal_loans'",
     )
     blue_green_run
 
