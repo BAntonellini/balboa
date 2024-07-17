@@ -14,7 +14,7 @@ from pendulum import datetime
         "email_on_failure": True,
     },
     catchup=False,
-    tags=["version_1"],
+    tags=["version_2"],
     description="Datacoves blue-green run",
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/
