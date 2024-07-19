@@ -22,7 +22,7 @@ def datacoves_secrets_backend():
     # Calling dbt commands
     echo_simple_secret = DatacovesBashOperator(
         task_id="echo_simple_secret",
-        bash_command=f"echo ${snowflake_password}",
+        bash_command="echo ${snowflake_password}",
         env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
     )
 
@@ -32,7 +32,7 @@ def datacoves_secrets_backend():
         task_id="echo_complex_secret",
         # Virtual Environment is automatically activated
         # activate_venv=True,
-        bash_command=f"echo ${all_passwords}",
+        bash_command="echo ${all_passwords}",
         env={"all_passwords": "{{ var.value.get('all_passwords') }}"},
     )
 
