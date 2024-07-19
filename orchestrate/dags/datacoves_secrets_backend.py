@@ -23,6 +23,7 @@ def datacoves_secrets_backend():
     echo_simple_secret = DatacovesBashOperator(
         task_id="echo_simple_secret",
         bash_command=f"echo ${snowflake_password}",
+        env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
     )
 
     # This is calling an external Python file after activating the venv
@@ -32,6 +33,7 @@ def datacoves_secrets_backend():
         # Virtual Environment is automatically activated
         # activate_venv=True,
         bash_command=f"echo ${all_passwords}",
+        env={"all_passwords": "{{ var.value.get('all_passwords') }}"},
     )
 
     # Define task dependencies
