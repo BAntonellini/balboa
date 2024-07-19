@@ -1,5 +1,5 @@
 from airflow.decorators import dag
-from airflow.operators.bash import BashOperator
+from operators.datacoves.bash import DatacovesBashOperator
 from pendulum import datetime
 
 
@@ -11,7 +11,7 @@ from pendulum import datetime
         "email_on_failure": True,
     },
     catchup=False,
-    tags=["version_10"],
+    tags=["version_11"],
     description="Datacoves Secrets Backend dag",
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/
@@ -20,7 +20,7 @@ from pendulum import datetime
 )
 def datacoves_secrets_backend():
     # Calling dbt commands
-    echo_simple_secret = BashOperator(
+    echo_simple_secret = DatacovesBashOperator(
         task_id="echo_simple_secret",
         bash_command="echo ${snowflake_password}",
         env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
