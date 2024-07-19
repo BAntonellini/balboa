@@ -11,7 +11,7 @@ from pendulum import datetime
         "email_on_failure": True,
     },
     catchup=False,
-    tags=["version_1"],
+    tags=["version_10"],
     description="Datacoves Secrets Backend dag",
     # This is a regular CRON schedule. Helpful resources
     # https://cron-ai.vercel.app/
@@ -25,19 +25,7 @@ def datacoves_secrets_backend():
         bash_command="echo ${snowflake_password}",
         env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
     )
-
-    # This is calling an external Python file after activating the venv
-    # use this instead of the Python Operator
-    echo_complex_secret = BashOperator(
-        task_id="echo_complex_secret",
-        # Virtual Environment is automatically activated
-        # activate_venv=True,
-        bash_command="echo ${all_passwords}",
-        env={"all_passwords": "{{ var.value.get('all_passwords') }}"},
-    )
-
-    # Define task dependencies
-    echo_complex_secret.set_upstream([echo_simple_secret])
+    echo_simple_secret
 
 
 # Invoke Dag
