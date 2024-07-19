@@ -22,7 +22,7 @@ def datacoves_secrets_backend():
     # Calling dbt commands
     echo_simple_secret = DatacovesBashOperator(
         task_id="echo_simple_secret",
-        bash_command=f"echo ${snowflake-password}",
+        bash_command=f"echo ${snowflake_password}",
     )
 
     # This is calling an external Python file after activating the venv
@@ -31,7 +31,7 @@ def datacoves_secrets_backend():
         task_id="echo_complex_secret",
         # Virtual Environment is automatically activated
         # activate_venv=True,
-        bash_command=f"echo ${all-passwords}",
+        bash_command=f"echo ${all_passwords}",
     )
 
     # Define task dependencies
