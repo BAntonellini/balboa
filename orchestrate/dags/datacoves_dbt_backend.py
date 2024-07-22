@@ -18,18 +18,18 @@ from pendulum import datetime
     # https://crontab.guru/
     schedule_interval="0 0 1 */12 *",
 )
-def datacoves_secrets_backend():
+def datacoves_dbt_backend():
     # Calling dbt commands
-    echo_simple_secret = DatacovesDbtOperator(
-        task_id="echo_simple_secret",
+    dbt_echo_simple_secret = DatacovesDbtOperator(
+        task_id="dbt_echo_simple_secret",
         bash_command="echo ${snowflake_password}",
         env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
     )
 
     # This is calling an external Python file after activating the venv
     # use this instead of the Python Operator
-    echo_complex_secret = DatacovesDbtOperator(
-        task_id="echo_complex_secret",
+    dbt_echo_complex_secret = DatacovesDbtOperator(
+        task_id="dbt_echo_complex_secret",
         # Virtual Environment is automatically activated
         # activate_venv=True,
         bash_command="echo ${all_passwords}",
@@ -37,8 +37,8 @@ def datacoves_secrets_backend():
     )
 
     # Define task dependencies
-    echo_complex_secret.set_upstream([echo_simple_secret])
+    dbt_echo_complex_secret.set_upstream([dbt_echo_simple_secret])
 
 
 # Invoke Dag
-dag = datacoves_secrets_backend()
+dag = datacoves_dbt_backend()
