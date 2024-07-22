@@ -1,5 +1,5 @@
 from airflow.decorators import dag
-from operators.datacoves.bash import DatacovesBashOperator
+from operators.datacoves.dbt import DatacovesDbtOperator
 from pendulum import datetime
 
 
@@ -20,7 +20,7 @@ from pendulum import datetime
 )
 def datacoves_secrets_backend():
     # Calling dbt commands
-    echo_simple_secret = DatacovesBashOperator(
+    echo_simple_secret = DatacovesDbtOperator(
         task_id="echo_simple_secret",
         bash_command="echo ${snowflake_password}",
         env={"snowflake_password": "{{ var.value.get('snowflake_password') }}"},
@@ -28,7 +28,7 @@ def datacoves_secrets_backend():
 
     # This is calling an external Python file after activating the venv
     # use this instead of the Python Operator
-    echo_complex_secret = DatacovesBashOperator(
+    echo_complex_secret = DatacovesDbtOperator(
         task_id="echo_complex_secret",
         # Virtual Environment is automatically activated
         # activate_venv=True,
