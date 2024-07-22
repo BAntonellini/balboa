@@ -32,8 +32,8 @@ def datacoves_dbt_backend():
         task_id="dbt_echo_complex_secret",
         # Virtual Environment is automatically activated
         # activate_venv=True,
-        bash_command="echo ${all_passwords}",
-        env={"all_passwords": "{{ var.value.get('all_passwords') }}"},
+        bash_command="echo ${all_paswords}",
+        env={"all_paswords": "{{ var.value.get('all_paswords') }}"},
     )
 
     # Define task dependencies
