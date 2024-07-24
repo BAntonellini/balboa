@@ -8,7 +8,6 @@ with population_rank as (
         ) as rank_years
     from {{ ref('country_populations') }}
 )
-
 select
     country_code,
     value as total_population,
