@@ -30,10 +30,6 @@ jobs:
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: " "
-
-      - id: dotenv
-        uses: falti/dotenv-action@v1.0.4
-
       - name: Run dbt checkpoint
         uses: dbt-checkpoint/action@v0.1
         env:
