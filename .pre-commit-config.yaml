@@ -5,8 +5,8 @@ repos:
     rev: v2.0.3
 
     hooks:
-      - id: check-source-table-has-description
-      - id: check-script-semicolon
+      - id: dbt-deps
+      - id: dbt-parse
       - id: check-script-has-no-table-name
       - id: check-script-ref-and-source
       - id: check-model-has-description
@@ -25,7 +25,11 @@ repos:
         #   sqlfluff-templater-dbt should match the version of sqlfluff above in rev (pip show sqlfluff-templater-dbt)
         #   dbt-snowflake needs to match the version in transform tab of Datacoves (pip show dbt-snowflake)
         additional_dependencies:
-          ["sqlfluff-templater-dbt==3.1.0", "dbt-snowflake==1.8.3", "dbt-core==1.8.3"]
+          [
+            "sqlfluff-templater-dbt==3.1.0",
+            "dbt-snowflake==1.8.3",
+            "dbt-core==1.8.3",
+          ]
         args: [--config, transform/.sqlfluff]
 
   - repo: https://github.com/adrienverge/yamllint.git
