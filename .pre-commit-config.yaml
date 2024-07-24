@@ -6,7 +6,9 @@ repos:
 
     hooks:
       - id: dbt-deps
+        always_run: true
       - id: dbt-parse
+        always_run: true
       - id: check-script-has-no-table-name
       - id: check-script-ref-and-source
       - id: check-model-has-description
