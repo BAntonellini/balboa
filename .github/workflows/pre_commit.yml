@@ -1,0 +1,43 @@
+name: Perform deployment to production
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    name: Deployment Script
+    runs-on: ubuntu-latest
+    env:
+      DATACOVES__MAIN__ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+      DATACOVES__MAIN__DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+      DATACOVES__MAIN__SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
+      DATACOVES__MAIN__USER: ${{ vars.SNOWFLAKE_USER }}
+      DATACOVES__MAIN__PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      DATACOVES__MAIN__ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+      DATACOVES__MAIN__WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v3
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: " "
+
+      - id: dotenv
+        uses: falti/dotenv-action@v1.0.4
+
+      - name: Run dbt checkpoint
+        uses: dbt-checkpoint/action@v0.1
+        env:
+          DBT_PROFILES_DIR: automate/dbt
+        with:
+          extra_args: --files ${{ steps.file_changes.outputs.files}}
+          dbt_version: 1.7.3
+          dbt_adapter: dbt-redshift
