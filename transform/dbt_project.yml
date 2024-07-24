@@ -1,15 +1,15 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'balboa'
+name: "balboa"
 # this is the project version, has nothing to do with dbt version
-version: '33.0.0'
+version: "33.0.0"
 config-version: 2
 
 require-dbt-version: ">=1.1.0"
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: "default"
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -26,11 +26,10 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
-target-path: "target"  # directory which will store compiled SQL files
-clean-targets:         # directories to be removed by `dbt clean`
+target-path: "target" # directory which will store compiled SQL files
+clean-targets: # directories to be removed by `dbt clean`
     - "target"
     - "dbt_packages"
-
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -54,7 +53,6 @@ snapshots:
         node_color: "#0f703d"
 
 models:
-
     balboa:
         +materialized: view
         +schema: Z_SCHEMA_NOT_CONFIGURED
@@ -112,7 +110,6 @@ models:
         #       relation: false
         #       columns: false
 
-
         +persist_docs:
             relation: true
             columns: true
@@ -125,12 +122,12 @@ models:
     +transient: "{{ 'false' if target.name == 'prd' else 'true' }}"
     copy_grants: true
 
-data_tests:
+tests:
     +store_failures: true
     +schema: DBT_TEST__AUDIT
 
 vars:
-    'dbt_date:time_zone': 'America/Los_Angeles'
+    "dbt_date:time_zone": "America/Los_Angeles"
 
     data_diff:
         prod_database: BALBOA
