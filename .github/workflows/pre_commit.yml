@@ -26,10 +26,6 @@ jobs:
       - name: Install pre-commit
         run: pip install pre-commit
 
-      - id: file_changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: " "
       - name: Run dbt checkpoint
         uses: dbt-checkpoint/action@v0.1
         env:
