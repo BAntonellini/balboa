@@ -8,8 +8,6 @@ models:
         data_tests:
           - not_null
           - unique
-      - name: country_name
-        description: "Name of the country"
       - name: total_population
         description: "Total population for the country"
       - name: year
