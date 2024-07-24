@@ -1,4 +1,4 @@
-name: Perform deployment to production
+name: Pre-commit
 
 on:
   # Allows you to run this workflow manually from the Actions tab
